@@ -1,0 +1,32 @@
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.exe
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.AssemblyInfoInputs.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.AssemblyInfo.cs
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.RazorTargetAssemblyInfo.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\staticwebassets\CHAT - API.StaticWebAssets.Manifest.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\staticwebassets\CHAT - API.StaticWebAssets.xml
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.deps.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.runtimeconfig.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.runtimeconfig.dev.json
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.pdb
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\SharpCompress.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - Algorithms.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - Algorithms.pdb
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.csprojAssemblyReference.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.csproj.CoreCompileInputs.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.csproj.CopyComplete
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.dll
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.pdb
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.genruntimeconfig.cache
