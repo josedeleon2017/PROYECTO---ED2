@@ -81,8 +81,9 @@ namespace CHAT___Algorithms
             return ConvertToByte(result);
         }
 
-        public void SetKeys(BitArray key)
+        public void SetKeys(int private_key)
         {
+            BitArray key = ConvertKey(private_key);
             key = Permutation10(key);
 
             BitArray splited_key1 = CopyTo(key, 0, 5);
@@ -309,6 +310,7 @@ namespace CHAT___Algorithms
         }
         public byte ConvertToByte(BitArray input)
         {
+            //byte test = Convert.ToByte(input);
             string number = "";
             for (int i = 0; i < input.Length; i++)
             {
@@ -399,6 +401,18 @@ namespace CHAT___Algorithms
             output[7] = input[7];
 
             return output;
+        }
+
+        public BitArray ConvertKey(int key)
+        {
+            BitArray result = new BitArray(10);
+            string key_converted = Convert.ToString(key, 2).PadLeft(10, '0');
+            for (int i = 0; i < result.Length; i++)
+            {
+                if (key_converted[i] == '1') result[i] = true;
+                else result[i] = false;
+            }
+            return result;
         }
     }
 }

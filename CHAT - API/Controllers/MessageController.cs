@@ -31,5 +31,19 @@ namespace CHAT___API.Controllers
                 return 0;
             }
         }
+
+        [HttpPost("conversation")]
+        public IEnumerable<MessageModel> GetMessages(List<string> users)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                return db_conection.GetMessages(users[0], users[1]);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MessageModel>
+<h1>CHAT</h1>
+<hr />
+
+@foreach (var item in Model)
+{
+    @if (item.Transmitter == ViewBag.Logged)
+    {
+        <blockquote class="blockquote">
+            <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+        </blockquote>
+    }
+    else
+    {
+        <blockquote class="blockquote text-right">
+            <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+            </blockquote>
+    }
+}
+
+<hr />
+<div class="form-group">
+    <label for="exampleTextarea">Escribe un mensaje</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+</div>
+<div class="form-group">
+    <label for="exampleInputFile">Adjuntar un archivo</label>
+    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Este archivo se comprimirá con LZW</small>
+</div>
+
+<button type="button" class="btn btn-success btn-lg btn-block">ENVIAR</button>
+<button type="button" class="btn btn-primary btn-lg btn-block">ACTUALIZAR</button>

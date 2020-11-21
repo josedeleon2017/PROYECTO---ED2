@@ -41,3 +41,4 @@ C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\bin\Debug\netcoreapp3.1\Newt
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.csproj.CoreCompileInputs.cache
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\QueryChat.cshtml.g.cs

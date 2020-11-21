@@ -75,9 +75,7 @@ namespace CHAT___API.Storage
         private string EncryptPassword(string password)
         {
             SDES sdes = new SDES();
-            bool[] key = new bool[10] { true, true, false, true, false, true, true, false, false, true };
-            BitArray bits = new BitArray(key);
-            sdes.SetKeys(bits);
+            sdes.SetKeys(10);
 
             byte[] password_encrypted = sdes.EncryptText(ConvertToByte(password));
             return ConvertToString(password_encrypted);
@@ -104,8 +102,60 @@ namespace CHAT___API.Storage
         public bool SaveMessage(MessageModel message)
         {
             var messagesDB = db.GetCollection<MessageModel>("messages");
+            message = EncryptMessage(message);
             messagesDB.InsertOne(message);
             return true;
+        }
+        
+        public List<MessageModel> GetMessages(string user1, string user2)
+        {
+            var messagesDB = db.GetCollection<MessageModel>("messages");
+            List<MessageModel> messages_result = messagesDB.Find(x => (x.Transmitter == user1 && x.Receiver == user2) || (x.Transmitter == user2 && x.Receiver == user1)).ToList().OrderBy(x=>x.Date).ToList();
+            List<MessageModel> result = new List<MessageModel>(messages_result.Count);
+            for (int i = 0; i < messages_result.Count; i++)
+            {
+                result.Add(DecryptMessage(messages_result[i]));
+            }
+            return result;
+            /**Si lo anterior no funciona usar 
+            //List<MessageModel> list = messagesDB.Find(x => x.Transmitter == user1.UserName && x.Receiver==user2.UserName).ToList();
+            //List<MessageModel> list2 = messagesDB.Find(x => x.Transmitter == user2.UserName && x.Receiver == user1.UserName).ToList();
+            //List<MessageModel> result = list.Concat(list2).ToList().OrderByDescending(x => x.Date).ToList();
+            return messages_result;**/
+        }
+        
+        public MessageModel DecryptMessage(MessageModel message)
+        {
+            var usersDB = db.GetCollection<UserModel>("users");
+            int trasnmitter_key = usersDB.Find(x => x.UserName == message.Transmitter).ToList()[0].Key;
+            int receiver_key = usersDB.Find(x => x.UserName == message.Receiver).ToList()[0].Key;
+
+            DiffieHellman df = new DiffieHellman();
+            int publickey = df.GetPublicKey(trasnmitter_key);
+            int commonkey = df.GetCommonKey(publickey, receiver_key);
+
+            SDES sdes = new SDES();
+            sdes.SetKeys(commonkey);
+
+            message.Content = ConvertToString(sdes.DecryptText(ConvertToByte(message.Content)));
+
+            return message;
+        }
+        public MessageModel EncryptMessage(MessageModel message)
+        {
+            var usersDB = db.GetCollection<UserModel>("users");
+            int trasnmitter_key = usersDB.Find(x => x.UserName == message.Transmitter).ToList()[0].Key;
+            int receiver_key = usersDB.Find(x => x.UserName == message.Receiver).ToList()[0].Key;
+
+            DiffieHellman df = new DiffieHellman();
+            int publickey = df.GetPublicKey(trasnmitter_key);
+            int commonkey = df.GetCommonKey(publickey, receiver_key);
+
+            SDES sdes = new SDES();
+            sdes.SetKeys(commonkey);
+            message.Content = ConvertToString(sdes.EncryptText(ConvertToByte(message.Content)));
+
+            return message;
         }
     }
 }
