@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<string>
 
 <h1>BIENVENIDO</h1>
-<p><span class="text-primary"><b><i>@ViewBag.User</i></b></span></p>
+<h6>@ViewBag.User</h6>
+
 <hr />
 <br />
-
-
 
 <div class="row">
     @foreach (var item in Model)
@@ -17,7 +16,7 @@
                         <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" height="150">
                         <hr />
                         <h4 class="list-group-item-heading"><i>@Html.DisplayFor(model => item)</i></h4>
-                        <p class="list-group-item-text">@Html.ActionLink("ENVIAR MENSAJE", "QueryChat", new { user = item })</p>
+                        <p class="btn btn-primary">@Html.ActionLink("ENVIAR MENSAJE", "QueryChat", new { user = item }, new { style = "text-decoration:none; color:white" })</p>
                     </center>
                 </div>
             </div>

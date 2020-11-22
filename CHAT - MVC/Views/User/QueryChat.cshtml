@@ -1,35 +1,62 @@
 ﻿@model IEnumerable<MessageModel>
+
+
+
+
 <h1>CHAT</h1>
+<p class="btn btn-primary btn-sm float-right">@Html.ActionLink("ACTUALIZAR", "QueryChat", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
+<h6>@ViewBag.Logged - @ViewBag.Second</h6>
 <hr />
 
-@foreach (var item in Model)
+@if (ViewBag.Result != null)
 {
-    @if (item.Transmitter == ViewBag.Logged)
-    {
-        <blockquote class="blockquote">
-            <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-        </blockquote>
-    }
-    else
-    {
-        <blockquote class="blockquote text-right">
-            <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-            </blockquote>
-    }
+    <div class="alert alert-dismissible alert-secondary">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>@ViewBag.Result</strong>
+    </div>
 }
 
-<hr />
-<div class="form-group">
-    <label for="exampleTextarea">Escribe un mensaje</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-</div>
-<div class="form-group">
-    <label for="exampleInputFile">Adjuntar un archivo</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">Este archivo se comprimirá con LZW</small>
-</div>
 
-<button type="button" class="btn btn-success btn-lg btn-block">ENVIAR</button>
-<button type="button" class="btn btn-primary btn-lg btn-block">ACTUALIZAR</button>
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            @if (item.Transmitter == ViewBag.Logged)
+            {
+                <blockquote class="blockquote">
+                    <p class="mb-0 justify-content-around"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                </blockquote>
+            }
+            else
+            {
+                <blockquote class="blockquote text-right">
+                    <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                </blockquote>
+            }
+        }
+
+        <hr />
+        @using (Html.BeginForm("QueryChat", "User", new { user = ViewBag.Second }))
+        {
+            <form class="form-horizontal">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Escribe un mensaje</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3" name="Message"></textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputFile">Adjuntar un archivo</label>
+                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text text-muted">Este archivo se comprimirá con LZW</small>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">ENVIAR</button>
+                </fieldset>
+            </form>
+        }
+
+    </div>
+</div>

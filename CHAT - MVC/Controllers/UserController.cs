@@ -138,8 +138,52 @@ namespace CHAT___MVC.Controllers
             return View();
         }
 
-        public ActionResult QueryChat(string user)
+        public ActionResult QueryChat(string user, IFormCollection collection)
         {
+            if (collection.Count != 0)
+            {
+                MessageModel message = new MessageModel();
+                string content = collection["Message"];
+                if (content != "")
+                {
+                    message.Content = content;
+                    message.Transmitter = HttpContext.Session.GetString("UserName");
+                    message.Receiver = user;
+                    message.Date = DateTime.Now;
+                    message.Type = 1;
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44389/api/");
+                        var responseTask = client.PostAsJsonAsync("message/save", message);
+                        responseTask.Wait();
+
+                        var result = responseTask.Result;
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var read = result.Content.ReadAsStringAsync();
+                            read.Wait();                          
+                            int result_converted = JsonSerializer.Deserialize<int>(read.Result);
+                            if (result_converted != 0)
+                            {
+                                ViewBag.Result = "MENSAJE GUARDADO EXITOSAMENTE";
+                            }
+                            else
+                            {
+                                ViewBag.Result = "NO SE PUDO GUARDAR EL MENSAJE";
+                            }
+                        }
+                    }
+                }
+                //if(Se ADJUNTO UN ARCHIVO)
+                else
+                {
+                    ViewBag.Result = "NO SE PERMITEN MENSAJES VACÍOS";
+                    return View(new List<MessageModel>());
+                }
+
+
+            }
+
             List<string> users = new List<string> { HttpContext.Session.GetString("UserName"), user };
             List<MessageModel> conversation = new List<MessageModel>();
             using (var client = new HttpClient())
@@ -158,16 +202,18 @@ namespace CHAT___MVC.Controllers
                     if (conversation.Count()!=0)
                     {
                         ViewBag.Logged = HttpContext.Session.GetString("UserName");
+                        ViewBag.Second = user;
                         return View(conversation);
                     }
                     else
                     {
-                        ViewBag.Result = "NO SE ENCONTRARON MESANJES";
+                        ViewBag.Logged = HttpContext.Session.GetString("UserName");
+                        ViewBag.Second = user;
+                        ViewBag.Result = "NO SE ENCONTRARON MENSAJES";
                     }
                 }
             }
-
-            return View();
+            return View(new List<MessageModel>());
         }
         public ActionResult SendMessage()
         {

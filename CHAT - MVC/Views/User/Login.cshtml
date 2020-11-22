@@ -28,7 +28,13 @@
                     <input class="form-control" type="password" data-val="true" data-val-required="The Password field is required." id="Input_Password" name="Password" />
                     <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
                 </div>
-                <p class="list-group-item-text text-left">@Html.ActionLink("¿No posee una cuenta?", "Register","User")</p>
+                <p class="list-group-item-text text-left text-muted">
+                    <small>
+                        ¿No posee una cuenta?
+                        <br />
+                        @Html.ActionLink("Crea una nueva cuenta aquí", "Register", "User", null, new { style = "text-decoration:none; color:gray" })
+                        </small>
+                </p>
                 <div class="form-group">
                     <button id="login-submit" type="submit" class="btn btn-primary">ENTRAR</button>
                 </div>
