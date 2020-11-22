@@ -42,3 +42,4 @@ C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\QueryChat.cshtml.g.cs
+C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\SearchMessage.cshtml.g.cs

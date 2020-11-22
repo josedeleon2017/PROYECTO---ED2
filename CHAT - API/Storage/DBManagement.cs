@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CHAT___API.Storage
@@ -124,6 +125,22 @@ namespace CHAT___API.Storage
             return messages_result;**/
         }
         
+        public List<MessageModel> SearchMessages(List<string> values)
+        {
+            var messagesDB = db.GetCollection<MessageModel>("messages");
+            List<MessageModel> messages_result = messagesDB.Find(x => (x.Transmitter == values[1] && x.Type == 1) || (x.Receiver == values[1] && x.Type == 1)).ToList().OrderBy(x => x.Date).ToList();
+            List<MessageModel> filtered_list = new List<MessageModel>();
+            for (int i = 0; i < messages_result.Count; i++)
+            {
+                MessageModel current_message = DecryptMessage(messages_result[i]);    
+                if (Regex.Match(current_message.Content, $@"\b{values[0]}\w*\b").Success)
+                {
+                    filtered_list.Add(current_message);
+                }
+            }
+            return filtered_list;
+        }
+
         public MessageModel DecryptMessage(MessageModel message)
         {
             var usersDB = db.GetCollection<UserModel>("users");

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<MessageModel>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active">Data</li>
+    </ol>
+
+<h1>BÚSQUEDA</h1>
+<hr />
+<div class="col-md-4">
+    @using (Html.BeginForm("SearchMessage", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Búsqueda de mensajes</label>
+                <input type="text" class="form-control" name="Word" placeholder="Ingrese la palabra clave">
+                <small id="emailHelp" class="form-text text-muted">Se obtendrán todos los mensajes en los que el usuario haya podido visualizar la palabra clave</small>
+            </div>
+            <button type="submit" class="btn btn-primary">BUSCAR</button>
+        </form>
+    }
+</div>
+
+
+@foreach (var item in Model)
+{
+<hr />
+<blockquote class="blockquote">
+    <p class="mb-0 justify-content-around"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Id)</footer>
+</blockquote>
+}

@@ -14,7 +14,7 @@ namespace CHAT___API.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        [HttpPost("{save}")]
+        [HttpPost("save")]
         public int SaveMessage(MessageModel message)
         {
             try
@@ -39,6 +39,20 @@ namespace CHAT___API.Controllers
             {
                 var db_conection = new DBManagement();
                 return db_conection.GetMessages(users[0], users[1]);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost("search")]
+        public IEnumerable<MessageModel> SearchWord(List<string> values)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                return db_conection.SearchMessages(values);
             }
             catch (Exception)
             {

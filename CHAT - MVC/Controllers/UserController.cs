@@ -215,9 +215,39 @@ namespace CHAT___MVC.Controllers
             }
             return View(new List<MessageModel>());
         }
-        public ActionResult SendMessage()
+        public ActionResult SearchMessage(IFormCollection collection)
         {
-            return View();
+            if(collection.Count != 0)
+            {
+                List<MessageModel> result_list;
+                List<string> values = new List<string>() { collection["Word"], HttpContext.Session.GetString("UserName") };
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://localhost:44389/api/");
+                    var responseTask = client.PostAsJsonAsync("message/search", values);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var read = result.Content.ReadAsStringAsync();
+                        read.Wait();
+                        JsonSerializerOptions name_rule = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true };
+                        result_list = JsonSerializer.Deserialize<List<MessageModel>>(read.Result, name_rule);
+                        if (result_list.Count != 0)
+                        {
+                            return View(result_list);
+                        }
+                        else
+                        {
+                            //VIEWBAG NO SE ECONTRARON RESULTADOS
+                        }
+                    }
+                }
+            }
+            return View(new List<MessageModel>());
         }
+
+        
     }
 }
