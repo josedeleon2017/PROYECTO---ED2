@@ -14,6 +14,7 @@ namespace CHAT___API.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
+
         [HttpPost("save")]
         public int SaveMessage(MessageModel message)
         {

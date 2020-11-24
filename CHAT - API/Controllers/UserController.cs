@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CHAT___API.Models;
 using CHAT___API.Storage;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,6 +15,11 @@ namespace CHAT___API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private IWebHostEnvironment environment;
+        public UserController(IWebHostEnvironment env)
+        {
+            environment = env;
+        }
         [HttpPost("add")]
         public int CreateUser(UserModel user)
         {
@@ -67,6 +73,8 @@ namespace CHAT___API.Controllers
         [HttpGet]
         public string Get()
         {
+            FileManage data = new FileManage();
+            data.CreateDirectoriesForData(environment.ContentRootPath);
             return "CHAT";
         }
 

@@ -7,3 +7,12 @@ C:\Users\José De León\Desktop\NEW ED 2\CHAT - Algorithms\obj\Debug\netcoreapp3
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.csproj.CoreCompileInputs.cache
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.dll
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\bin\Debug\netcoreapp3.1\CHAT - Algorithms.deps.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\bin\Debug\netcoreapp3.1\CHAT - Algorithms.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\bin\Debug\netcoreapp3.1\CHAT - Algorithms.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.csprojAssemblyReference.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.AssemblyInfoInputs.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.AssemblyInfo.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - Algorithms\obj\Debug\netcoreapp3.1\CHAT - Algorithms.pdb
