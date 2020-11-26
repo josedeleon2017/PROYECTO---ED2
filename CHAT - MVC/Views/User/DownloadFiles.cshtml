@@ -1,0 +1,63 @@
+﻿@model IEnumerable<FileModel>
+
+
+<h1>Archivos</h1>
+<p class="btn btn-primary btn-sm float-right">@Html.ActionLink("REGRESAR", "QueryChat", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
+<h6>@ViewBag.Logged - @ViewBag.Second</h6>
+<h2 class="text-success"> @ViewBag.ConfirmationFile</h2>
+<hr />
+
+
+<table class="table" id="tablaDeArchivos" name="Datos">
+    <tr>
+        <th>
+            @Html.DisplayName("Emisor")
+        </th>
+        <th>
+            @Html.DisplayName("Receptor")
+        </th>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Tamaño")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second}))
+            {
+                
+                <tr>
+                    
+                    <td>
+                        <input type="text" id="val1" class="border-0" name="Transmiter" value="@Html.DisplayFor(modelItem => item.Transmitter)" readonly>
+                    </td>
+                    <td>
+                        <input type="text" id="val2" class="border-0" name="Reciver" value=" @Html.DisplayFor(modelItem => item.Receiver)" readonly>
+                    </td>
+                    <td>
+                        <input type="text" id="val3" class="border-0" name="OriginalFileName" value=" @Html.DisplayFor(modelItem => item.OriginalFileName)" readonly>
+                    </td>
+                    <td>
+                        <input type="text" id="val4" class="border-0" name="Size" value=" @Html.DisplayFor(modelItem => item.Size)" readonly>
+                    </td>
+                    <td>
+                        <input type="text" id="val5" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.AbsolutePhat)" readonly>
+                    </td>
+                    <td>
+                        <input type="submit" value="Descargar"/>
+                    </td>
+                    <td>
+                        <input type="text" id="val5" class="border-0 invisible" name="Path" value= @ViewBag.Second readonly>
+                    </td>
+                </tr>
+            }
+        }
+    }
+</table>

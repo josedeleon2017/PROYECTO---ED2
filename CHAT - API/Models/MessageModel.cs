@@ -20,5 +20,10 @@ namespace CHAT___API.Models
         public DateTime Date { get; set; }
         [BsonElement("type")]
         public int Type { get; set; }
+
+        [BsonElement("path")]
+        public string Path { get; set; }
+
+
     }
 }

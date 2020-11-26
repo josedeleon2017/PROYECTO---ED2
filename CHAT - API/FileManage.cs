@@ -103,11 +103,11 @@ namespace CHAT___API
                 split = CompressedFilePath.Split("compressions");
                 CompressedFilePath = split[0] + "compressions\\" + CompressedFileName;
             }
-            byte[] nombre = Encoding.ASCII.GetBytes(originalName.PadRight(20, '\0').ToArray());
+            byte[] nombre = Encoding.ASCII.GetBytes(originalName.PadRight(200, '\0').ToArray());
             using (var fs = new FileStream(CompressedFilePath, FileMode.OpenOrCreate))
             {
-                fs.Write(nombre, 0, 20);
-                fs.Seek(20, SeekOrigin.Begin);
+                fs.Write(nombre, 0, 200);
+                fs.Seek(200, SeekOrigin.Begin);
                 fs.Write(result, 0, result.Length);
             }
             CompressionRatio = lzw.CompressionRatio();
@@ -120,7 +120,7 @@ namespace CHAT___API
             LZW lzw = new LZW();
             List<byte> temp = new List<byte>();
             byte[] buffer;
-            byte[] getoriginalName = new byte[20];
+            byte[] getoriginalName = new byte[200];
             string file_name;
 
             using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))

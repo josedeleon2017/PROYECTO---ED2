@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using CHAT___API.Models;
+using CHAT___API.Storage;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,21 +23,24 @@ namespace CHAT___API.Controllers
             environment = env;
         }
 
-        [HttpPost("compress/{name}")]
-        public ActionResult CompressFile([FromForm] IFormFile file, string name)
+        [HttpPost("test")]
+        public int EsteEsUnTest()
+        {
+            return 1;
+        }
+
+        [HttpPost("compress")]
+        public int CompressFile(FileModel sendFile)
         {
             try
             {
-                string file_path = environment.ContentRootPath + $"\\Data\\temporal\\{name}.txt";
-                string fileName = file.FileName;
-                string file_compressedpath = environment.ContentRootPath + $"\\Data\\compressions\\{name}.lzw";
-                FileManage _file = new FileManage() { OriginalFileName = file.FileName, CompressedFileName = name + ".lzw", CompressedFilePath = file_compressedpath, DateOfCompression = Convert.ToDateTime(DateTime.Now.ToShortTimeString()) };
-
-                //Save the file in the server
-                _file.SaveFile(file, file_path);
+                string fileName = sendFile.OriginalFileName;
+                string file_path = environment.ContentRootPath + $"\\Data\\temporal\\" + fileName;
+                string file_compressedpath = sendFile.AbsolutePhat;
+                FileManage _file = new FileManage() { OriginalFileName = fileName, CompressedFileName = sendFile.RegisterFileName, CompressedFilePath = file_compressedpath, DateOfCompression = Convert.ToDateTime(DateTime.Now.ToShortTimeString()) };
 
                 //Compress the file previously saved
-                _file.CompressFile(file_path, file.FileName);
+                _file.CompressFile(file_path, fileName);
 
                 //Write on log file the compression result
                 _file.WriteCompression(_file);
@@ -43,16 +48,16 @@ namespace CHAT___API.Controllers
                 //Delete the original file 
                 _file.DeleteFile(file_path);
 
-                FileStream result = new FileStream(_file.CompressedFilePath, FileMode.Open);
-                return File(result, "text/plain", _file.CompressedFileName);
+                return 1;
 
             }
             catch (Exception)
             {
 
-                return StatusCode(500);
+                return -1;
             }
         }
+
 
         [HttpPost("decompress")]
         public ActionResult DecompressFile([FromForm] IFormFile file)
@@ -88,13 +93,77 @@ namespace CHAT___API.Controllers
         }
 
         [HttpGet("compressions")]
-        public IEnumerable<FileManage> GetCompressions()
+        public IEnumerable<FileManage> GetCompressions(string file)
         {
             try
             {
                 string path = environment.ContentRootPath + "\\Data\\compressions_history.json";
                 FileManage fm = new FileManage();
                 return fm.GetAllCompressions(path);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost("save")]
+        public FileModel SaveFile(FileModel file)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                if (db_conection.SaveFile(file))
+                {
+                    var test = file.Id;
+                    return file;
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        [HttpPost("edit")]
+        public int EditFile(FileModel file)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                if (db_conection.EditFile(file))
+                {
+                    return 1;
+                }
+                return 0;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        [HttpPost("files")]
+        public IEnumerable<FileModel> GetFiles(List<string> users)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                return db_conection.GetFiles(users[0], users[1]);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+        [HttpPost("filesDownload")]
+        public IEnumerable<FileModel> GetFilesForDownload(List<string> users)
+        {
+            try
+            {
+                var db_conection = new DBManagement();
+                return db_conection.GetFilesForDownload(users[0], users[1]);
             }
             catch (Exception)
             {

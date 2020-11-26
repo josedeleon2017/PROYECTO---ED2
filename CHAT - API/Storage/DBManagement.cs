@@ -53,7 +53,6 @@ namespace CHAT___API.Storage
             }
             return result;
         }
-
         private int GetNewKey()
         {
             var usersDB = db.GetCollection<UserModel>("users");
@@ -99,7 +98,6 @@ namespace CHAT___API.Storage
             }
             return result;
         }
-
         public bool SaveMessage(MessageModel message)
         {
             var messagesDB = db.GetCollection<MessageModel>("messages");
@@ -107,7 +105,19 @@ namespace CHAT___API.Storage
             messagesDB.InsertOne(message);
             return true;
         }
-        
+        public bool SaveFile(FileModel file)
+        {
+            var messagesDB = db.GetCollection<FileModel>("files");
+            messagesDB.InsertOne(file);
+            return true;
+        }
+
+        public bool EditFile(FileModel fileReplace)
+        {
+            var filesMongo = db.GetCollection<FileModel>("files");
+            filesMongo.ReplaceOne(file => file.Id == fileReplace.Id, fileReplace);
+            return true;
+        }
         public List<MessageModel> GetMessages(string user1, string user2)
         {
             var messagesDB = db.GetCollection<MessageModel>("messages");
@@ -124,7 +134,19 @@ namespace CHAT___API.Storage
             //List<MessageModel> result = list.Concat(list2).ToList().OrderByDescending(x => x.Date).ToList();
             return messages_result;**/
         }
-        
+        public List<FileModel> GetFilesForDownload(string Logeado, string Usuario)
+        {
+            var messagesDB = db.GetCollection<FileModel>("files");
+            List<FileModel> FilesFind = messagesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado) || (x.Receiver == Usuario && x.Transmitter == Logeado)).ToList().OrderBy(x => x.Date).ToList();
+            return FilesFind;
+        }
+        public List<FileModel> GetFiles(string Logeado, string Usuario)
+        {
+            var messagesDB = db.GetCollection<FileModel>("files");
+            List<FileModel> FilesFind = messagesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado && x.Status == 0)).ToList().OrderBy(x => x.Date).ToList();
+            return FilesFind;
+        }
+
         public List<MessageModel> SearchMessages(List<string> values)
         {
             var messagesDB = db.GetCollection<MessageModel>("messages");

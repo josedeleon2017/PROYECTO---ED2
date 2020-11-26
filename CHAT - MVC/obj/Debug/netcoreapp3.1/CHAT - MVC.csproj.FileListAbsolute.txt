@@ -43,3 +43,49 @@ C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\QueryChat.cshtml.g.cs
 C:\Users\José De León\Desktop\NEW ED 2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\SearchMessage.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.exe
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.deps.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.runtimeconfig.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.runtimeconfig.dev.json
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.Views.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\CHAT - MVC.Views.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.csprojAssemblyReference.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.AssemblyInfoInputs.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.AssemblyInfo.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.csproj.CoreCompileInputs.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.RazorAssemblyInfo.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.RazorAssemblyInfo.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.TagHelpers.input.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.TagHelpers.output.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.RazorCoreGenerate.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\QueryChat.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\SearchMessage.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.RazorTargetAssemblyInfo.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.RazorTargetAssemblyInfo.cs
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.Views.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.csproj.CopyComplete
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\staticwebassets\CHAT - MVC.StaticWebAssets.Manifest.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\staticwebassets\CHAT - MVC.StaticWebAssets.xml
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.dll
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.pdb
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\CHAT - MVC.genruntimeconfig.cache
+C:\Users\kevin\OneDrive\Documentos\GitHub\PROYECTO---ED2\CHAT - MVC\obj\Debug\netcoreapp3.1\Razor\Views\User\DownloadFiles.cshtml.g.cs

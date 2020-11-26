@@ -3,9 +3,11 @@
 
 
 
+<p class="btn btn-primary btn-sm float-right">@Html.ActionLink("ARCHIVOS", "DownloadFiles", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
 <h1>CHAT</h1>
 <p class="btn btn-primary btn-sm float-right">@Html.ActionLink("ACTUALIZAR", "QueryChat", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
 <h6>@ViewBag.Logged - @ViewBag.Second</h6>
+<h2 class="text-success"> @ViewBag.ConfirmationFile</h2>
 <hr />
 
 @if (ViewBag.Result != null)
@@ -23,17 +25,45 @@
         {
             @if (item.Transmitter == ViewBag.Logged)
             {
-                <blockquote class="blockquote">
-                    <p class="mb-0 justify-content-around"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-                    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                </blockquote>
+                if (item.Type == 2)
+                {
+                    @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
+                    {
+                         <blockquote class="blockquote">
+                              <p class="mb-0 justify-content-around"> <b>@Html.DisplayFor(modelItem => item.Content) </b></p>
+                              <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                              <p class="mb-0 justify-content-around"> <b><input type="submit" value="Descargar" /></b><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly></p>
+                          </blockquote>
+                    }
+                }
+                else
+                {
+                    <blockquote class="blockquote">
+                        <p class="mb-0 justify-content-around"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                        <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                    </blockquote>
+                }
             }
             else
             {
-                <blockquote class="blockquote text-right">
-                    <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-                    <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                </blockquote>
+                if (item.Type == 2)
+                {
+                    @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
+                    {
+                        <blockquote class="blockquote text-right">
+                            <p  class="mb-0"> <b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                            <p class="mb-0"><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly> <b><input type="submit" value="Descargar" /></b></p>
+                        </blockquote>
+                    }
+                }
+                else
+                {
+                    <blockquote class="blockquote text-right">
+                        <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                        <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
+                    </blockquote>
+                }
             }
         }
 
@@ -47,16 +77,19 @@
                         <textarea class="form-control" id="exampleTextarea" rows="3" name="Message"></textarea>
                     </div>
 
-
-                    <div class="form-group">
-                        <label for="exampleInputFile">Adjuntar un archivo</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">Este archivo se comprimirá con LZW</small>
-                    </div>
                     <button type="submit" class="btn btn-success btn-lg btn-block">ENVIAR</button>
                 </fieldset>
             </form>
         }
 
+        <form method="post" asp-action="Upload" asp-controller="User" enctype="multipart/form-data" user=ViewBag.Second>
+            <div class="form-group">
+                <label for="exampleInputFile">Adjuntar un archivo</label>
+                <br />
+                <input type="file" name="file" /> <input type="text" id="User" class="border-0 invisible" name="user" value="@ViewBag.Second" readonly>
+            </div>
+            <input type="submit" value="Enviar Archivo"/>
+
+        </form>
     </div>
 </div>
