@@ -131,6 +131,9 @@ namespace CHAT___TEST
         public DateTime Date { get; set; }
         [BsonElement("type")]
         public int Type { get; set; }
+
+        [BsonElement("registerName")]
+        public string RegisterName { get; set; }
     }
 
     public class UserModel

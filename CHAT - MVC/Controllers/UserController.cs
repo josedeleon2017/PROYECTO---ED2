@@ -154,7 +154,7 @@ namespace CHAT___MVC.Controllers
         }
         public ActionResult QueryChat(string user, IFormCollection collection)
         {
-
+            if (HttpContext.Session.GetString("UserName") == "" || HttpContext.Session.GetString("UserName") == null) return RedirectToAction("Index", "Home");
             HttpContext.Session.SetString("UserConversation", user);
             if (collection.Count != 0)
             {
@@ -194,8 +194,6 @@ namespace CHAT___MVC.Controllers
                 {
                     ViewBag.Result = "NO SE PERMITEN MENSAJES VACÍOS";
                 }
-
-
             }
 
             List<string> users = new List<string> { HttpContext.Session.GetString("UserName"), user };
@@ -231,7 +229,7 @@ namespace CHAT___MVC.Controllers
                             {
                                 ViewBag.Logged = HttpContext.Session.GetString("UserName");
                                 ViewBag.Second = user;
-                                ViewBag.Result = "TIENE NUEVOS ARCHIVOS PARA DESCARGAR";
+                                ViewBag.Result2 = "TIENE NUEVOS ARCHIVOS PARA DESCARGAR";
                             }
                         }
                         return View(conversation);
@@ -240,7 +238,7 @@ namespace CHAT___MVC.Controllers
                     {
                         ViewBag.Logged = HttpContext.Session.GetString("UserName");
                         ViewBag.Second = user;
-                        ViewBag.Result = "NO SE ENCONTRARON MENSAJES";
+                        ViewBag.Result2 = "NO SE ENCONTRARON MENSAJES";
                     }
                 }
                
@@ -249,7 +247,8 @@ namespace CHAT___MVC.Controllers
         }
         public ActionResult SearchMessage( IFormCollection collection)
         {
-            if(collection.Count != 0)
+            if (HttpContext.Session.GetString("UserName") == "" || HttpContext.Session.GetString("UserName") == null) return RedirectToAction("Index", "Home");
+            if (collection.Count != 0)
             {
                 string word = collection["Word"];
                 if (word.Trim() == "")
@@ -319,60 +318,29 @@ namespace CHAT___MVC.Controllers
         public ActionResult Upload(IFormFile file, IFormCollection collection)
         {
             string user = collection["user"];
-            var save = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "\\PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\temporal\\" + file.FileName;
-            FileManage fileManage = new FileManage();
-            FileModel sendFile = new FileModel()
+            if (file == null)
             {
-                Date = System.DateTime.Now,
-                OriginalFileName = file.FileName,
-                Receiver = HttpContext.Session.GetString("UserConversation"),
-                Transmitter = HttpContext.Session.GetString("UserName"),
-                Status = 0
-            };
-            long size = file.Length;
-            fileManage.save(file, save);
-            using (var client = new HttpClient())
-            {
-
-                client.BaseAddress = new Uri("https://localhost:44389/api/");
-                var responseTask = client.PostAsJsonAsync("file/save/", sendFile);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
-                {
-                    var read = result.Content.ReadAsStringAsync();
-                    read.Wait();
-                    JsonSerializerOptions name_rule = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true };
-                    FileModel result_converted = JsonSerializer.Deserialize<FileModel>(read.Result, name_rule);
-                    if (result_converted != null)
-                    {
-                        sendFile.Id = result_converted.Id;
-                        sendFile.Size = size;
-                        sendFile.RegisterFileName = sendFile.Id + sendFile.OriginalFileName.Split(".")[0] + ".lzw";
-                        sendFile.AbsolutePhat = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\compressions\\" + sendFile.RegisterFileName;
-                        responseTask = client.PostAsJsonAsync("file/edit", sendFile);
-                        responseTask.Wait();
-                        responseTask = client.PostAsJsonAsync("file/compress/", sendFile);
-                        responseTask.Wait();
-                    }
-
-                }
+                ViewBag.Result2 = "NO SE ADJUNTO NINGÚN ARCHIVO";
             }
-            MessageModel message = new MessageModel();
-            string content = sendFile.OriginalFileName;
-            if (content != "")
+            else
             {
-                message.Content = content;
-                message.Transmitter = HttpContext.Session.GetString("UserName");
-                message.Receiver = user;
-                message.Date = DateTime.Now;
-                message.Type = 2;
-                message.RegisterName = sendFile.RegisterFileName;
+                var save = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "\\PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\temporal\\" + file.FileName;
+                FileManage fileManage = new FileManage();
+                FileModel sendFile = new FileModel()
+                {
+                    Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss")),
+                    OriginalFileName = file.FileName,
+                    Receiver = HttpContext.Session.GetString("UserConversation"),
+                    Transmitter = HttpContext.Session.GetString("UserName"),
+                    Status = 0
+                };
+                long size = file.Length;
+                fileManage.save(file, save);
                 using (var client = new HttpClient())
                 {
+
                     client.BaseAddress = new Uri("https://localhost:44389/api/");
-                    var responseTask = client.PostAsJsonAsync("message/save", message);
+                    var responseTask = client.PostAsJsonAsync("file/save/", sendFile);
                     responseTask.Wait();
 
                     var result = responseTask.Result;
@@ -380,14 +348,52 @@ namespace CHAT___MVC.Controllers
                     {
                         var read = result.Content.ReadAsStringAsync();
                         read.Wait();
-                        int result_converted = JsonSerializer.Deserialize<int>(read.Result);
-                        if (result_converted != 0)
+                        JsonSerializerOptions name_rule = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true };
+                        FileModel result_converted = JsonSerializer.Deserialize<FileModel>(read.Result, name_rule);
+                        if (result_converted != null)
                         {
-                            ViewBag.Result = "MENSAJE GUARDADO EXITOSAMENTE";
+                            sendFile.Id = result_converted.Id;
+                            sendFile.Size = size;
+                            sendFile.RegisterFileName = sendFile.Id + sendFile.OriginalFileName.Split(".")[0] + ".lzw";
+                            sendFile.AbsolutePhat = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\compressions\\" + sendFile.RegisterFileName;
+                            responseTask = client.PostAsJsonAsync("file/edit", sendFile);
+                            responseTask.Wait();
+                            responseTask = client.PostAsJsonAsync("file/compress/", sendFile);
+                            responseTask.Wait();
                         }
-                        else
+
+                    }
+                }
+                MessageModel message = new MessageModel();
+                string content = sendFile.OriginalFileName;
+                if (content != "")
+                {
+                    message.Content = content;
+                    message.Transmitter = HttpContext.Session.GetString("UserName");
+                    message.Receiver = user;
+                    message.Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
+                    message.Type = 2;
+                    message.RegisterName = sendFile.RegisterFileName;
+                    using (var client = new HttpClient())
+                    {
+                        client.BaseAddress = new Uri("https://localhost:44389/api/");
+                        var responseTask = client.PostAsJsonAsync("message/save", message);
+                        responseTask.Wait();
+
+                        var result = responseTask.Result;
+                        if (result.IsSuccessStatusCode)
                         {
-                            ViewBag.Result = "NO SE PUDO GUARDAR EL MENSAJE";
+                            var read = result.Content.ReadAsStringAsync();
+                            read.Wait();
+                            int result_converted = JsonSerializer.Deserialize<int>(read.Result);
+                            if (result_converted != 0)
+                            {
+                                ViewBag.Result2 = "MENSAJE GUARDADO EXITOSAMENTE";
+                            }
+                            else
+                            {
+                                ViewBag.Result2 = "NO SE PUDO GUARDAR EL MENSAJE";
+                            }
                         }
                     }
                 }
@@ -435,6 +441,11 @@ namespace CHAT___MVC.Controllers
             var ext = Path.GetExtension(pathDescompress).ToLowerInvariant();
             return File(fileManage.RetunFile(pathDescompress), fileManage.GetFileType(ext), fileModel.OriginalFileName);
 
+        }
+        public ActionResult Exit()
+        {
+            HttpContext.Session.SetString("UserName", "");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

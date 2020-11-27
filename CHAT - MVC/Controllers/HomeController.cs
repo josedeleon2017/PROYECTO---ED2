@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CHAT___MVC.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace CHAT___MVC.Controllers
 {
@@ -20,6 +21,7 @@ namespace CHAT___MVC.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("UserName", "");
             return View();
         }
 

@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<string>
 
+<a class="btn btn-danger float-right" href='@Url.Action("Exit","User")' role="button">SALIR</a>
 <h1>BIENVENIDO</h1>
 <h6>@ViewBag.User</h6>
 
 <hr />
-
-<br />
-<a class="btn btn-secondary btn-lg" href='@Url.Action("SearchMessage","User")' role="button">BÚSCAR MENSAJE</a>
-<br />
-<br />
-<br />
+<a class="btn btn-dark" href='@Url.Action("SearchMessage","User")' role="button">BÚSCAR MENSAJE</a>
+<hr />
 
 <div class="row">
     @foreach (var item in Model)

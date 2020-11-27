@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevin\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {}
+    "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevin\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {
+    "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+        "projectUniqueName": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
         "projectName": "CHAT - API",
-        "projectPath": "C:\\Users\\kevin\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
-        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\obj\\",
+        "projectPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+        "packagesPath": "C:\\Users\\José De León\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\José De León\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
