@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using CHAT___MVC.Models;
-using CHAT___MVC.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
@@ -24,7 +23,7 @@ namespace CHAT___MVC.Controllers
         public ActionResult Index()
         {
             ViewBag.User = HttpContext.Session.GetString("UserName");
-            if (HttpContext.Session.GetString("UserName") == "") return RedirectToAction("Index", "Home");
+            if (HttpContext.Session.GetString("UserName") == "" || HttpContext.Session.GetString("UserName") == null) return RedirectToAction("Index", "Home");
             List<string> list = new List<string>();
             using (var client = new HttpClient())
             {
@@ -49,12 +48,17 @@ namespace CHAT___MVC.Controllers
             {
                 string user = collection["User"];
                 string password = collection["Password"];
-                if(user == "" || password == "")
+                if(user.Trim() == "" || password.Trim() == "")
                 {
                     ViewBag.Result = "DEBE LLENAR TODOS LOS CAMPOS";
                     return View();
                 }
-                UserModel user_logged = new UserModel() { UserName = user.ToUpper(), Password = password };
+                if ((user.Trim()).Contains(" ") || (password.Trim()).Contains(" "))
+                {
+                    ViewBag.Result = "NO SE ACEPTAN CREDENCIALES CON ESPACIOS INTERMEDIOS";
+                    return View();
+                }
+                UserModel user_logged = new UserModel() { UserName = user.ToUpper(), Password = password.Trim() };
                 int is_validated;
                 using (var client = new HttpClient())
                 {
@@ -71,7 +75,8 @@ namespace CHAT___MVC.Controllers
                         if (is_validated == 1)
                         {
                             HttpContext.Session.SetString("UserName", user_logged.UserName);
-                            Storage.Instance.UserLoged = user_logged.UserName;
+                            ///------>SINGLETON----------------------------------------------------------------->
+                           /// Storage.Instance.UserLoged = user_logged.UserName;
                             return RedirectToAction("Index", "User");
                         }
                         if (is_validated == 0)
@@ -102,19 +107,24 @@ namespace CHAT___MVC.Controllers
                 string user = collection["User"];
                 string password = collection["Password"];
                 string confirm_password = collection["ConfirmPassword"];
-                if(user == "" || password == "" || confirm_password == "")
+                if(user.Trim() == "" || password.Trim() == "" || confirm_password.Trim() == "")
                 {
                     ViewBag.Result = "DEBE LLENAR TODOS LOS CAMPOS";
                     return View();
                 }
-                if (password != confirm_password)
+                if ((user.Trim()).Contains(" ") || (password.Trim()).Contains(" ") || (confirm_password.Trim()).Contains(" "))
+                {
+                    ViewBag.Result = "NO SE ACEPTAN CREDENCIALES CON ESPACIOS INTERMEDIOS";
+                    return View();
+                }
+                if (password.Trim() != confirm_password.Trim())
                 {
                     ViewBag.Result = "LA CONTRASEÑA NO COINCIDE EN AMBOS CAMPOS";
                     return View();
                 }
                 else
                 {
-                    UserModel user_logged = new UserModel() { UserName = user.ToUpper(), Password = password };
+                    UserModel user_logged = new UserModel() { UserName = user.ToUpper().Trim(), Password = password.Trim() };
                     int is_validated;
                     using (var client = new HttpClient())
                     {
@@ -146,7 +156,8 @@ namespace CHAT___MVC.Controllers
         }
         public ActionResult QueryChat(string user, IFormCollection collection)
         {
-            Storage.Instance.Receiver = user;
+            ///------>SINGLETON----------------------------------------------------------------->
+            //Storage.Instance.Receiver = user;
             if (collection.Count != 0)
             {
                 MessageModel message = new MessageModel();
@@ -156,7 +167,7 @@ namespace CHAT___MVC.Controllers
                     message.Content = content;
                     message.Transmitter = HttpContext.Session.GetString("UserName");
                     message.Receiver = user;
-                    message.Date = DateTime.Now;
+                    message.Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
                     message.Type = 1;
                     using (var client = new HttpClient())
                     {
@@ -181,11 +192,9 @@ namespace CHAT___MVC.Controllers
                         }
                     }
                 }
-                //if(Se ADJUNTO UN ARCHIVO)
                 else
                 {
                     ViewBag.Result = "NO SE PERMITEN MENSAJES VACÍOS";
-                    return View(new List<MessageModel>());
                 }
 
 
@@ -244,8 +253,17 @@ namespace CHAT___MVC.Controllers
         {
             if(collection.Count != 0)
             {
+                string word = collection["Word"];
+                if (word.Trim() == "")
+                {
+                    ViewBag.Result = "DEBE INGRESAR UNA PALABRA CLAVE";
+                }
+                if (word.Trim().Contains(""))
+                {
+                    ViewBag.Result = "DEBE INGRESAR UNA ÚNICA PALABRA CLAVE";
+                }
                 List<MessageModel> result_list;
-                List<string> values = new List<string>() { collection["Word"], HttpContext.Session.GetString("UserName") };
+                List<string> values = new List<string>() { word, HttpContext.Session.GetString("UserName") };
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:44389/api/");
@@ -265,7 +283,7 @@ namespace CHAT___MVC.Controllers
                         }
                         else
                         {
-                            //VIEWBAG NO SE ECONTRARON RESULTADOS
+                            ViewBag.Result = "NO SE ENCONTRARON RESULTADOS";
                         }
                     }
                 }
@@ -309,8 +327,9 @@ namespace CHAT___MVC.Controllers
             {
                 Date = System.DateTime.Now,
                 OriginalFileName = file.FileName,
-                Receiver = Storage.Instance.Receiver,
-                Transmitter = Storage.Instance.UserLoged,
+                ///------>SINGLETON----------------------------------------------------------------->
+                //Receiver = Storage.Instance.Receiver,
+                //Transmitter = Storage.Instance.UserLoged,
                 Status = 0
             };
             long size = file.Length;

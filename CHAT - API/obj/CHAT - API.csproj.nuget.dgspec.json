@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {}
+    "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj": {
+    "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj",
-        "projectName": "CHAT - Algorithms",
-        "projectPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj",
-        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\obj\\",
+        "projectUniqueName": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+        "projectName": "CHAT - API",
+        "projectPath": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+        "packagesPath": "C:\\Users\\José De León\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\José De León\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,62 +30,6 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "netcoreapp3.1": {
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
-        "projectName": "CHAT - API",
-        "projectPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
-        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "netcoreapp3.1"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "netcoreapp3.1": {
-            "projectReferences": {
-              "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj": {
-                "projectPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj"
-              }
-            }
           }
         },
         "warningProperties": {
@@ -117,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

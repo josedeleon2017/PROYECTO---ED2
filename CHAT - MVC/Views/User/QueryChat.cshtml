@@ -1,10 +1,14 @@
 ﻿@model IEnumerable<MessageModel>
 
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">@Html.ActionLink("PRINCIPAL", "Index", "User")</li>
+        <li class="breadcrumb-item active">CHAT</li>
+    </ol>
 
 
 
-<p class="btn btn-primary btn-sm float-right">@Html.ActionLink("ARCHIVOS", "DownloadFiles", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
 <h1>CHAT</h1>
+<p class="btn btn-secondary btn-sm float-right">@Html.ActionLink("ARCHIVOS", "DownloadFiles", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
 <p class="btn btn-primary btn-sm float-right">@Html.ActionLink("ACTUALIZAR", "QueryChat", new { user = ViewBag.Second }, new { style = "text-decoration:none; color:white" })</p>
 <h6>@ViewBag.Logged - @ViewBag.Second</h6>
 <h2 class="text-success"> @ViewBag.ConfirmationFile</h2>
@@ -12,84 +16,130 @@
 
 @if (ViewBag.Result != null)
 {
-    <div class="alert alert-dismissible alert-secondary">
+    <div class="alert alert-dismissible alert-warning">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>@ViewBag.Result</strong>
     </div>
 }
 
 
-<div class="row">
-    <div class="col-md-12">
-        @foreach (var item in Model)
+
+<div class="col-md-12">
+    @foreach (var item in Model)
+    {
+        @if (item.Transmitter == ViewBag.Logged)
         {
-            @if (item.Transmitter == ViewBag.Logged)
+            if (item.Type == 2)
             {
-                if (item.Type == 2)
+                @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
                 {
-                    @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
-                    {
-                         <blockquote class="blockquote">
-                              <p class="mb-0 justify-content-around"> <b>@Html.DisplayFor(modelItem => item.Content) </b></p>
-                              <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                              <p class="mb-0 justify-content-around"> <b><input type="submit" value="Descargar" /></b><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly></p>
-                          </blockquote>
-                    }
-                }
-                else
-                {
-                    <blockquote class="blockquote">
-                        <p class="mb-0 justify-content-around"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-                        <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                    </blockquote>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="list-group">
+                                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1"></h5>
+                                        <small class="text-muted">@Html.DisplayFor(modelItem => item.Date)</small>
+                                    </div>
+                                    <p class="mb-auto"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.Transmitter)</small>
+                                    <p class="mb-0 justify-content-around"> <b><input type="submit" value="Descargar" /></b><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             }
             else
             {
-                if (item.Type == 2)
-                {
-                    @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
-                    {
-                        <blockquote class="blockquote text-right">
-                            <p  class="mb-0"> <b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-                            <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                            <p class="mb-0"><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly> <b><input type="submit" value="Descargar" /></b></p>
-                        </blockquote>
-                    }
-                }
-                else
-                {
-                    <blockquote class="blockquote text-right">
-                        <p class="mb-0"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
-                        <footer class="blockquote-footer">@Html.DisplayFor(modelItem => item.Transmitter) <br><cite title="Source Title">@Html.DisplayFor(modelItem => item.Date)</cite></footer>
-                    </blockquote>
-                }
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="list-group">
+                            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.Date)</small>
+                                </div>
+                                <p class="mb-auto"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                                <small class="text-muted">@Html.DisplayFor(modelItem => item.Transmitter)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
         }
-
-        <hr />
-        @using (Html.BeginForm("QueryChat", "User", new { user = ViewBag.Second }))
+        else
         {
-            <form class="form-horizontal">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="exampleTextarea">Escribe un mensaje</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="3" name="Message"></textarea>
+            if (item.Type == 2)
+            {
+                @using (Html.BeginForm("Download", "User", new { user = ViewBag.Second }))
+                {
+                    <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="list-group">
+                                <div class="list-group-item list-group-item-action flex-column align-items-end">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1"></h5>
+                                        <small class="text-muted">@Html.DisplayFor(modelItem => item.Date)</small>
+                                    </div>
+                                    <p class="mb-auto float-right"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                                    <br />
+                                    <small class="text-muted float-right">@Html.DisplayFor(modelItem => item.Transmitter)</small>
+                                    <p class="mb-0 justify-content-around"> <b><input type="submit" value="Descargar" /></b><input type="text" id="val2" class="border-0 invisible" name="Path" value=" @Html.DisplayFor(modelItem => item.Path)" readonly></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                }
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-6">
                     </div>
-
-                    <button type="submit" class="btn btn-success btn-lg btn-block">ENVIAR</button>
-                </fieldset>
-            </form>
+                    <div class="col-md-6">
+                        <div class="list-group">
+                            <div class="list-group-item list-group-item-action flex-column align-items-end">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"></h5>
+                                    <small class="text-muted">@Html.DisplayFor(modelItem => item.Date)</small>
+                                </div>
+                                <p class="mb-auto float-right"><b>@Html.DisplayFor(modelItem => item.Content)</b></p>
+                                <br />
+                                <small class="text-muted float-right">@Html.DisplayFor(modelItem => item.Transmitter)</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         }
+    }
 
-        <form method="post" asp-action="Upload" asp-controller="User" enctype="multipart/form-data" user=ViewBag.Second>
-            <div class="form-group">
-                <label for="exampleInputFile">Adjuntar un archivo</label>
-                <br />
-                <input type="file" name="file" /> <input type="text" id="User" class="border-0 invisible" name="user" value="@ViewBag.Second" readonly>
-            </div>
-            <input type="submit" value="Enviar Archivo"/>
+    <hr />
+    @using (Html.BeginForm("QueryChat", "User", new { user = ViewBag.Second }))
+    {
+        <form class="form-horizontal">
+            <fieldset>
+                <div class="form-group">
+                    <label for="exampleTextarea">Escribe un mensaje</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3" name="Message"></textarea>
+                </div>
 
+                <button type="submit" class="btn btn-success btn-lg btn-block">ENVIAR</button>
+            </fieldset>
         </form>
-    </div>
+    }
+
+    <hr />
+    <form method="post" asp-action="Upload" asp-controller="User" enctype="multipart/form-data" user=ViewBag.Second>
+        <div class="form-group">
+            <label for="exampleInputFile"><b>ADJUNTAR ARCHIVO</b></label>
+            <br />
+            <input type="submit" class="btn btn-primary float-right" value="ENVIAR ARCHIVO" />
+            <input type="file" name="file" /> <input type="text" id="User" class="border-0 invisible" name="user" value="@ViewBag.Second" readonly>
+        </div>
+    </form>
 </div>
+

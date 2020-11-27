@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHAT - Algorithms\CHAT - Algorithms.csproj" />
+    <Reference Include="CHAT - Algorithms">
+      <HintPath>..\..\..\temporal dll\CHAT - Algorithms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 

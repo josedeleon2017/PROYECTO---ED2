@@ -1309,16 +1309,6 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
-      },
-      "CHAT - Algorithms/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "compile": {
-          "bin/placeholder/CHAT - Algorithms.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CHAT - Algorithms.dll": {}
-        }
       }
     }
   },
@@ -4727,33 +4717,31 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
-    },
-    "CHAT - Algorithms/1.0.0": {
-      "type": "project",
-      "path": "../CHAT - Algorithms/CHAT - Algorithms.csproj",
-      "msbuildProject": "../CHAT - Algorithms/CHAT - Algorithms.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "CHAT - Algorithms >= 1.0.0",
       "MongoDB.Driver >= 2.11.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kevin\\.nuget\\packages\\": {}
+    "C:\\Users\\José De León\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+      "projectUniqueName": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
       "projectName": "CHAT - API",
-      "projectPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
-      "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - API\\obj\\",
+      "projectPath": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\CHAT - API.csproj",
+      "packagesPath": "C:\\Users\\José De León\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\José De León\\Desktop\\DLL\\PROYECTO---ED2\\CHAT - API\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\José De León\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4765,11 +4753,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {
-            "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj": {
-              "projectPath": "C:\\Users\\kevin\\OneDrive\\Documentos\\GitHub\\PROYECTO---ED2\\CHAT - Algorithms\\CHAT - Algorithms.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -4804,7 +4788,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

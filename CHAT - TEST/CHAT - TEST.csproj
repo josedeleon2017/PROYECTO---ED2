@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CHAT - Algorithms\CHAT - Algorithms.csproj" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="CHAT - Algorithms">
+      <HintPath>..\..\..\temporal dll\CHAT - Algorithms.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
