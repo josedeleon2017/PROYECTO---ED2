@@ -13,6 +13,6 @@ namespace CHAT___MVC.Models
         public string Content { get; set; }
         public DateTime Date { get; set; }
         public int Type { get; set; }
-        public string Path { get; set; }
+        public string RegisterName { get; set; }
     }
 }

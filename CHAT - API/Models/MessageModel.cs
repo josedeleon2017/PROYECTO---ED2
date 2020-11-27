@@ -21,8 +21,8 @@ namespace CHAT___API.Models
         [BsonElement("type")]
         public int Type { get; set; }
 
-        [BsonElement("path")]
-        public string Path { get; set; }
+        [BsonElement("registerName")]
+        public string RegisterName { get; set; }
 
 
     }

@@ -75,8 +75,6 @@ namespace CHAT___MVC.Controllers
                         if (is_validated == 1)
                         {
                             HttpContext.Session.SetString("UserName", user_logged.UserName);
-                            ///------>SINGLETON----------------------------------------------------------------->
-                           /// Storage.Instance.UserLoged = user_logged.UserName;
                             return RedirectToAction("Index", "User");
                         }
                         if (is_validated == 0)
@@ -156,8 +154,8 @@ namespace CHAT___MVC.Controllers
         }
         public ActionResult QueryChat(string user, IFormCollection collection)
         {
-            ///------>SINGLETON----------------------------------------------------------------->
-            //Storage.Instance.Receiver = user;
+
+            HttpContext.Session.SetString("UserConversation", user);
             if (collection.Count != 0)
             {
                 MessageModel message = new MessageModel();
@@ -327,9 +325,8 @@ namespace CHAT___MVC.Controllers
             {
                 Date = System.DateTime.Now,
                 OriginalFileName = file.FileName,
-                ///------>SINGLETON----------------------------------------------------------------->
-                //Receiver = Storage.Instance.Receiver,
-                //Transmitter = Storage.Instance.UserLoged,
+                Receiver = HttpContext.Session.GetString("UserConversation"),
+                Transmitter = HttpContext.Session.GetString("UserName"),
                 Status = 0
             };
             long size = file.Length;
@@ -371,7 +368,7 @@ namespace CHAT___MVC.Controllers
                 message.Receiver = user;
                 message.Date = DateTime.Now;
                 message.Type = 2;
-                message.Path = sendFile.AbsolutePhat;
+                message.RegisterName = sendFile.RegisterFileName;
                 using (var client = new HttpClient())
                 {
                     client.BaseAddress = new Uri("https://localhost:44389/api/");
@@ -400,15 +397,44 @@ namespace CHAT___MVC.Controllers
         [HttpPost]
         public ActionResult Download(string user, IFormCollection llaves)
         {
-            string[] ruta = llaves["Path"].ToString().Split("\\");
+            string pathDescompress = "";
+            FileModel fileModel = new FileModel();
             FileManage fileManage = new FileManage();
-            string paht = environment.ContentRootPath.Split("CHAT - MVC")[0] + "CHAT - API\\Data\\compressions" + ruta[10];
+            fileModel.RegisterFileName = llaves["Register"];
+            fileModel.RegisterFileName = fileModel.RegisterFileName.Trim();
+            using (var client = new HttpClient())
+            {
 
+                client.BaseAddress = new Uri("https://localhost:44389/api/");
+                var responseTask = client.PostAsJsonAsync("file/download/", fileModel);
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var read = result.Content.ReadAsStringAsync();
+                    read.Wait();
+                    JsonSerializerOptions name_rule = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true };
+                    fileModel = JsonSerializer.Deserialize<FileModel>(read.Result, name_rule);
+                }
 
-            return File(fileManage.RetunFile(paht), "text/plain", "test.txt");
-            //File(result, "text/plain", file_name);
-            //FileStream result = new FileStream(path, FileMode.Open);
-            //return RedirectToAction("QueryChat", "user", new { user = user });
+            }
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44389/api/");
+                var responseTask = client.PostAsJsonAsync("file/decompress/", fileModel);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var read = result.Content.ReadAsStringAsync();
+                    read.Wait();
+                    pathDescompress = read.Result;
+                }
+            }
+            var ext = Path.GetExtension(pathDescompress).ToLowerInvariant();
+            return File(fileManage.RetunFile(pathDescompress), fileManage.GetFileType(ext), fileModel.OriginalFileName);
+
         }
     }
 }

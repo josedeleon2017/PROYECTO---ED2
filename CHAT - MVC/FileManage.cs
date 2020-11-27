@@ -10,6 +10,23 @@ namespace CHAT___MVC
 {
     public class FileManage
     {
+        public string GetFileType(string extension) 
+        {
+            Dictionary<string, string> Filetypes = new Dictionary<string, string>()
+            {
+                {".txt" ,"text/plain"},
+                {".pdf" ,"aplication/pdf"},
+                {".doc" ,"aplication/vnd.ms-word"},
+                {".docx" ,"aplication/vns.ms-word"},
+                {".xls" ,"aplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+                {".png" ,"image/png"},
+                {".jpg" ,"image/jpeg"},
+                {".jpeg" ,"image/jpeg"},
+                {".gif" ,"image/gif"},
+                {".csv" ,"text/csv"}
+            };
+            return Filetypes[extension];
+        }
         public void save(IFormFile file, String pathSave)
         {
             if (File.Exists(pathSave))
@@ -34,5 +51,7 @@ namespace CHAT___MVC
             }
             return buffer;
         }
+
+        
     }
 }

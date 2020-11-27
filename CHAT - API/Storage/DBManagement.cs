@@ -136,15 +136,21 @@ namespace CHAT___API.Storage
         }
         public List<FileModel> GetFilesForDownload(string Logeado, string Usuario)
         {
-            var messagesDB = db.GetCollection<FileModel>("files");
-            List<FileModel> FilesFind = messagesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado) || (x.Receiver == Usuario && x.Transmitter == Logeado)).ToList().OrderBy(x => x.Date).ToList();
+            var filesDB = db.GetCollection<FileModel>("files");
+            List<FileModel> FilesFind = filesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado) || (x.Receiver == Usuario && x.Transmitter == Logeado)).ToList().OrderBy(x => x.Date).ToList();
             return FilesFind;
         }
         public List<FileModel> GetFiles(string Logeado, string Usuario)
         {
-            var messagesDB = db.GetCollection<FileModel>("files");
-            List<FileModel> FilesFind = messagesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado && x.Status == 0)).ToList().OrderBy(x => x.Date).ToList();
+            var filesDB = db.GetCollection<FileModel>("files");
+            List<FileModel> FilesFind = filesDB.Find(x => (x.Transmitter == Usuario && x.Receiver == Logeado && x.Status == 0)).ToList().OrderBy(x => x.Date).ToList();
             return FilesFind;
+        }
+        public FileModel GetFileForDownload(string registerName)
+        {
+            var filesDB = db.GetCollection<FileModel>("files");
+            List<FileModel> FilesFind = filesDB.Find(x => (x.RegisterFileName.Equals(registerName))).ToList();
+            return FilesFind[0];
         }
 
         public List<MessageModel> SearchMessages(List<string> values)

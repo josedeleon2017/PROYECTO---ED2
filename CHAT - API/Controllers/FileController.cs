@@ -60,36 +60,13 @@ namespace CHAT___API.Controllers
 
 
         [HttpPost("decompress")]
-        public ActionResult DecompressFile([FromForm] IFormFile file)
+        public string DecompressFile(FileModel downloadFile)
         {
-            try
-            {
-                string file_path = environment.ContentRootPath + $"\\Data\\temporal\\{file.FileName}";
-                string output_file_path = environment.ContentRootPath + $"\\Data\\compressions\\{file.FileName}";
-
-                FileManage _file = new FileManage();
-
-                //Save the file in the server
-                _file.SaveFile(file, file_path);
-
-                //Get the original file name
-                //string file_name = _file.GetOriginalName(environment.ContentRootPath, file.FileName);
-
-                //Decompress the file previosly saved
-                string file_name = _file.DecompressFile(file_path);
-
-
-                //Delete the original file 
-                _file.DeleteFile(file_path);
-
-                string path = environment.ContentRootPath + $"\\Data\\decompressions\\{file_name}";
-                FileStream result = new FileStream(path, FileMode.Open);
-                return File(result, "text/plain", file_name);
-            }
-            catch (Exception)
-            {
-                return StatusCode(500);
-            }
+            FileManage _file = new FileManage();
+            //Decompress the file previosly saved
+            string file_name = _file.DecompressFile(downloadFile);
+            string path = environment.ContentRootPath + $"\\Data\\decompressions\\{file_name}";
+            return path;
         }
 
         [HttpGet("compressions")]
@@ -164,6 +141,22 @@ namespace CHAT___API.Controllers
             {
                 var db_conection = new DBManagement();
                 return db_conection.GetFilesForDownload(users[0], users[1]);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        [HttpPost("download")]
+        public FileModel GetFileForDownload(FileModel fileModel)
+        {
+            string registerName = fileModel.RegisterFileName;
+            try
+            {
+                var db_conection = new DBManagement();
+                return db_conection.GetFileForDownload(registerName);
             }
             catch (Exception)
             {

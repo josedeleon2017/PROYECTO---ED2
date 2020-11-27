@@ -1,4 +1,5 @@
 ﻿using CHAT___Algorithms;
+using CHAT___API.Models;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -115,7 +116,7 @@ namespace CHAT___API
             ReductionPercentage = lzw.ReductionPercentage();
         }
 
-        public string DecompressFile(string path)
+        public string DecompressFile(FileModel file)
         {
             LZW lzw = new LZW();
             List<byte> temp = new List<byte>();
@@ -123,7 +124,7 @@ namespace CHAT___API
             byte[] getoriginalName = new byte[200];
             string file_name;
 
-            using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(file.AbsolutePhat, FileMode.OpenOrCreate))
             {
 
                 buffer = new byte[fs.Length];
@@ -140,10 +141,9 @@ namespace CHAT___API
             }
             buffer = temp.ToArray();
             var split = Encoding.ASCII.GetString(getoriginalName).Split(".");
-            file_name = split[0] + ".txt";
+            file_name = file.OriginalFileName;
             byte[] result = lzw.DecodeData(buffer);
-            string[] path_result = path.Split("Data");
-            string file_path = path_result[0] + $"\\Data\\decompressions\\{file_name}";
+            string file_path = file.AbsolutePhat.Split("Data")[0] + $"Data\\decompressions\\{file_name}";
             using (var fs = new FileStream(file_path, FileMode.OpenOrCreate))
             {
                 fs.Write(result, 0, result.Length);
