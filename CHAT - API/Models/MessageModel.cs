@@ -16,6 +16,8 @@ namespace CHAT___API.Models
         public string Receiver { get; set; }
         [BsonElement("content")]
         public string Content { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [BsonElement("date")]
         public DateTime Date { get; set; }
         [BsonElement("type")]

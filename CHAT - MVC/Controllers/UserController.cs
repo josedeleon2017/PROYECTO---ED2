@@ -114,6 +114,11 @@ namespace CHAT___MVC.Controllers
                 {
                     ViewBag.Result = "NO SE ACEPTAN CREDENCIALES CON ESPACIOS INTERMEDIOS";
                     return View();
+                }                    
+                if (user.Trim().Contains("/"))
+                {
+                    ViewBag.Result = "EL USUARIO NO DEBE CONTENER CARACTERES ESPECIALES";
+                    return View();
                 }
                 if (password.Trim() != confirm_password.Trim())
                 {
@@ -166,7 +171,7 @@ namespace CHAT___MVC.Controllers
                     message.Content = content;
                     message.Transmitter = HttpContext.Session.GetString("UserName");
                     message.Receiver = user;
-                    message.Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
+                    message.Date = DateTime.Now;
                     message.Type = 1;
                     using (var client = new HttpClient())
                     {
@@ -255,10 +260,12 @@ namespace CHAT___MVC.Controllers
                 if (word.Trim() == "")
                 {
                     ViewBag.Result = "DEBE INGRESAR UNA PALABRA CLAVE";
+                    return View(new List<MessageModel>());
                 }
-                if (word.Trim().Contains(""))
+                if (word.Trim().Contains(" "))
                 {
                     ViewBag.Result = "DEBE INGRESAR UNA ÚNICA PALABRA CLAVE";
+                    return View(new List<MessageModel>());
                 }
                 List<MessageModel> result_list;
                 List<string> values = new List<string>() { word, HttpContext.Session.GetString("UserName") };
@@ -331,7 +338,7 @@ namespace CHAT___MVC.Controllers
                 FileManage fileManage = new FileManage();
                 FileModel sendFile = new FileModel()
                 {
-                    Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss")),
+                    Date = DateTime.Now,
                     OriginalFileName = file.FileName,
                     Receiver = HttpContext.Session.GetString("UserConversation"),
                     Transmitter = HttpContext.Session.GetString("UserName"),
@@ -387,7 +394,7 @@ namespace CHAT___MVC.Controllers
                     message.Content = content;
                     message.Transmitter = HttpContext.Session.GetString("UserName");
                     message.Receiver = user;
-                    message.Date = Convert.ToDateTime(DateTime.Now.ToString("dd'/'MM'/'yyyy HH:mm:ss"));
+                    message.Date = DateTime.Now;
                     message.Type = 2;
                     message.RegisterName = sendFile.RegisterFileName;
                     using (var client = new HttpClient())

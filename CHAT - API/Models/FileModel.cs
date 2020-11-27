@@ -22,6 +22,7 @@ namespace CHAT___API.Models
         [BsonElement("registerFileName")]
         public string RegisterFileName { get; set; }
 
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         [BsonElement("date")]
         public DateTime Date { get; set; }
         [BsonElement("status")]
