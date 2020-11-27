@@ -19,6 +19,7 @@ namespace CHAT___MVC
                 {".doc" ,"aplication/vnd.ms-word"},
                 {".docx" ,"aplication/vns.ms-word"},
                 {".xls" ,"aplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+                {".xlsx" ,"aplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
                 {".png" ,"image/png"},
                 {".jpg" ,"image/jpeg"},
                 {".jpeg" ,"image/jpeg"},
