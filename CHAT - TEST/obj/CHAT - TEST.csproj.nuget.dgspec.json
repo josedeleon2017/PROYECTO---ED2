@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj": {}
+    "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj": {}
   },
   "projects": {
-    "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj": {
+    "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj",
+        "projectUniqueName": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj",
         "projectName": "CHAT - TEST",
-        "projectPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj",
-        "packagesPath": "C:\\Users\\José De León\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - TEST\\obj\\",
+        "projectPath": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - TEST\\CHAT - TEST.csproj",
+        "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - TEST\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\José De León\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

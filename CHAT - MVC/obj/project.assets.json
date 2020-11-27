@@ -6140,23 +6140,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\José De León\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\kevin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - MVC\\CHAT - MVC.csproj",
+      "projectUniqueName": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - MVC\\CHAT - MVC.csproj",
       "projectName": "CHAT - MVC",
-      "projectPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - MVC\\CHAT - MVC.csproj",
-      "packagesPath": "C:\\Users\\José De León\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\José De León\\Desktop\\ED2 THURSDAY FINAL\\PROYECTO---ED2\\CHAT - MVC\\obj\\",
+      "projectPath": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - MVC\\CHAT - MVC.csproj",
+      "packagesPath": "C:\\Users\\kevin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kevin\\Desktop\\Proyec Ngrok\\PROYECTO---ED2\\CHAT - MVC\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\José De León\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\kevin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6207,7 +6203,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

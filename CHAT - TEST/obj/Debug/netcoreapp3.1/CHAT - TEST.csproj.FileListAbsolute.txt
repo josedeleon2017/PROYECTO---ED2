@@ -46,3 +46,27 @@ C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - TEST\ob
 C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.dll
 C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.pdb
 C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.genruntimeconfig.cache
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.exe
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.deps.json
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.runtimeconfig.json
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.runtimeconfig.dev.json
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - TEST.pdb
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\DnsClient.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\MongoDB.Driver.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\SharpCompress.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\runtimes\win\native\libzstd.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy32.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\runtimes\win\native\snappy64.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\bin\Debug\netcoreapp3.1\CHAT - Algorithms.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.csprojAssemblyReference.cache
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.AssemblyInfoInputs.cache
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.AssemblyInfo.cs
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.csproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.csproj.CopyComplete
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.dll
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.pdb
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - TEST\obj\Debug\netcoreapp3.1\CHAT - TEST.genruntimeconfig.cache
