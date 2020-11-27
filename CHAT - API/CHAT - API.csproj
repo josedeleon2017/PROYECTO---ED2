@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <Reference Include="CHAT - Algorithms">
-      <HintPath>..\..\..\temporal dll\CHAT - Algorithms.dll</HintPath>
+      <HintPath>..\CHAT - TEST\CHAT - Algorithms.dll</HintPath>
     </Reference>
   </ItemGroup>
 
