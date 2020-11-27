@@ -44,15 +44,19 @@ namespace CHAT___API
             }
             if (!Directory.Exists(file_path + "\\decompressions"))
             {
-                DirectoryInfo Entrada = Directory.CreateDirectory(file_path + "\\decompressions");
+                DirectoryInfo decompressions  = Directory.CreateDirectory(file_path + "\\decompressions");
             }
             if (!Directory.Exists(file_path + "\\compressions"))
             {
-                DirectoryInfo Salida = Directory.CreateDirectory(file_path + "\\compressions");
+                DirectoryInfo compressions = Directory.CreateDirectory(file_path + "\\compressions");
             }
             if (!Directory.Exists(file_path + "\\temporal"))
             {
-                DirectoryInfo Salida = Directory.CreateDirectory(file_path + "\\temporal");
+                DirectoryInfo temporal = Directory.CreateDirectory(file_path + "\\temporal");
+            }
+            if (!Directory.Exists(file_path + "\\otherExtensions"))
+            {
+                DirectoryInfo otherExtensions = Directory.CreateDirectory(file_path + "\\otherExtensions");
             }
         }
 

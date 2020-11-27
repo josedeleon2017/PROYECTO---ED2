@@ -152,8 +152,9 @@ namespace CHAT___MVC.Controllers
             }
             return View();
         }
-        public ActionResult QueryChat(string user, IFormCollection collection)
+        public ActionResult QueryChat(string response, string user, IFormCollection collection)
         {
+            ViewBag.Result2 = response;
             if (HttpContext.Session.GetString("UserName") == "" || HttpContext.Session.GetString("UserName") == null) return RedirectToAction("Index", "Home");
             HttpContext.Session.SetString("UserConversation", user);
             if (collection.Count != 0)
@@ -321,10 +322,12 @@ namespace CHAT___MVC.Controllers
             if (file == null)
             {
                 ViewBag.Result2 = "NO SE ADJUNTO NINGÚN ARCHIVO";
+                return RedirectToAction("QueryChat", "user", new { user = user, response = ViewBag.Result2 });
             }
             else
             {
                 var save = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "\\PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\temporal\\" + file.FileName;
+                long size = file.Length;
                 FileManage fileManage = new FileManage();
                 FileModel sendFile = new FileModel()
                 {
@@ -334,8 +337,7 @@ namespace CHAT___MVC.Controllers
                     Transmitter = HttpContext.Session.GetString("UserName"),
                     Status = 0
                 };
-                long size = file.Length;
-                fileManage.save(file, save);
+
                 using (var client = new HttpClient())
                 {
 
@@ -352,14 +354,28 @@ namespace CHAT___MVC.Controllers
                         FileModel result_converted = JsonSerializer.Deserialize<FileModel>(read.Result, name_rule);
                         if (result_converted != null)
                         {
-                            sendFile.Id = result_converted.Id;
-                            sendFile.Size = size;
-                            sendFile.RegisterFileName = sendFile.Id + sendFile.OriginalFileName.Split(".")[0] + ".lzw";
-                            sendFile.AbsolutePhat = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\compressions\\" + sendFile.RegisterFileName;
-                            responseTask = client.PostAsJsonAsync("file/edit", sendFile);
-                            responseTask.Wait();
-                            responseTask = client.PostAsJsonAsync("file/compress/", sendFile);
-                            responseTask.Wait();
+                            if (Path.GetExtension(save) == ".txt")
+                            {
+                                fileManage.save(file, save);
+                                sendFile.Id = result_converted.Id;
+                                sendFile.Size = size;
+                                sendFile.RegisterFileName = sendFile.Id + sendFile.OriginalFileName.Split(".")[0] + ".lzw";
+                                sendFile.AbsolutePhat = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "PROYECTO---ED2" + "\\CHAT - API" + "\\Data" + "\\compressions\\" + sendFile.RegisterFileName;
+                                responseTask = client.PostAsJsonAsync("file/edit", sendFile);
+                                responseTask.Wait();
+                                responseTask = client.PostAsJsonAsync("file/compress/", sendFile);
+                                responseTask.Wait();
+                            }
+                            else
+                            {
+                                sendFile.Id = result_converted.Id;
+                                sendFile.Size = size;
+                                sendFile.RegisterFileName = sendFile.Id + sendFile.OriginalFileName;
+                                sendFile.AbsolutePhat = environment.ContentRootPath.Split("PROYECTO---ED2")[0] + "PROYECTO---ED2\\CHAT - API\\Data\\otherExtensions\\" + sendFile.RegisterFileName;
+                                fileManage.save(file, sendFile.AbsolutePhat);
+                                responseTask = client.PostAsJsonAsync("file/edit", sendFile);
+                                responseTask.Wait();
+                            }
                         }
 
                     }
@@ -398,7 +414,7 @@ namespace CHAT___MVC.Controllers
                     }
                 }
             }
-            return RedirectToAction("QueryChat", "user", new { user = user });
+            return RedirectToAction("QueryChat", "user", new { user = user});
         }
         [HttpPost]
         public ActionResult Download(string user, IFormCollection llaves)
@@ -421,22 +437,35 @@ namespace CHAT___MVC.Controllers
                     read.Wait();
                     JsonSerializerOptions name_rule = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase, IgnoreNullValues = true };
                     fileModel = JsonSerializer.Deserialize<FileModel>(read.Result, name_rule);
+                    if (fileModel.Receiver == HttpContext.Session.GetString("UserName"))
+                    {
+                        fileModel.Status = 1;
+                        responseTask = client.PostAsJsonAsync("file/edit", fileModel);
+                        responseTask.Wait();
+                    }
                 }
 
             }
-            using (var client = new HttpClient())
+            if (Path.GetExtension(fileModel.AbsolutePhat) == ".lzw")
             {
-                client.BaseAddress = new Uri("https://localhost:44389/api/");
-                var responseTask = client.PostAsJsonAsync("file/decompress/", fileModel);
-                responseTask.Wait();
-
-                var result = responseTask.Result;
-                if (result.IsSuccessStatusCode)
+                using (var client = new HttpClient())
                 {
-                    var read = result.Content.ReadAsStringAsync();
-                    read.Wait();
-                    pathDescompress = read.Result;
+                    client.BaseAddress = new Uri("https://localhost:44389/api/");
+                    var responseTask = client.PostAsJsonAsync("file/decompress/", fileModel);
+                    responseTask.Wait();
+
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
+                    {
+                        var read = result.Content.ReadAsStringAsync();
+                        read.Wait();
+                        pathDescompress = read.Result;
+                    }
                 }
+            }
+            else
+            {
+                pathDescompress = fileModel.AbsolutePhat;
             }
             var ext = Path.GetExtension(pathDescompress).ToLowerInvariant();
             return File(fileManage.RetunFile(pathDescompress), fileManage.GetFileType(ext), fileModel.OriginalFileName);

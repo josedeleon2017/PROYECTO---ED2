@@ -161,7 +161,6 @@ C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - API\obj
 C:\Users\José De León\Desktop\ED2 THURSDAY FINAL\PROYECTO---ED2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.genruntimeconfig.cache
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\appsettings.json
-C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\Data\compressions_history.json
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.exe
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\CHAT - API.deps.json
@@ -191,3 +190,4 @@ C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\obj\Debug\netcorea
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.dll
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.pdb
 C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\obj\Debug\netcoreapp3.1\CHAT - API.genruntimeconfig.cache
+C:\Users\kevin\Desktop\Proyec Ngrok\PROYECTO---ED2\CHAT - API\bin\Debug\netcoreapp3.1\Data\compressions_history.json
