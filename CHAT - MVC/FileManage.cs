@@ -24,7 +24,12 @@ namespace CHAT___MVC
                 {".jpg" ,"image/jpeg"},
                 {".jpeg" ,"image/jpeg"},
                 {".gif" ,"image/gif"},
-                {".csv" ,"text/csv"}
+                {".csv" ,"text/csv"},
+                {".rar" , "application/x-rar-compressed"},
+                {".ppt", "application/vnd.ms-powerpoint"},
+                {".zip", "application/zip" },
+                {".exe","application/vnd.microsoft.portable-executable" },
+                {".bin","application/octet-stream" }
             };
             return Filetypes[extension];
         }
